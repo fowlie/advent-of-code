@@ -37,4 +37,9 @@ func main() {
 	sort.Ints(elves)
   fmt.Println("The elf with the most calories has", elves[len(elves)-1], "calories.")
 
+  var top_three int
+  for _, cal := range elves[2:] {
+    top_three = top_three + cal
+  }
+  fmt.Println("The top three elves combined has", top_three, "calories.")
 }
