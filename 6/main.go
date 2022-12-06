@@ -7,33 +7,26 @@ import (
 
 func main() {
 	data, _ := os.ReadFile("input")
-	for i := 0; i < len(data)-4; i++ {
-		if uniqueBytes(data[i : i+4]) {
-			fmt.Println("Part 1 result is", i+4)
-			break
+  fmt.Println("Part 1 result is", markerPosition(data, 4))
+  fmt.Println("Part 2 result is", markerPosition(data, 14))
+}
+
+func markerPosition(data []byte, size int) int {
+	for i := 0; i < len(data)-size; i++ {
+		if uniqueBytes(data[i : i+size]) {
+			return i + size
 		}
 	}
-
-
-	data, _ = os.ReadFile("input")
-	for i := 0; i < len(data)-14; i++ {
-		if uniqueBytes(data[i : i+14]) {
-			fmt.Println("Part 2 result is", i+14)
-			break
-		}
-	}
+	return -1
 }
 
 func uniqueBytes(bytes []byte) bool {
 	for i := 0; i < len(bytes); i++ {
-    for j := 0; j < len(bytes); j++ {
-      if i == j {
-        break
-      }
-      if bytes[i] == bytes[j] {
-        return false
-      }
-    }
+		for j := 0; j < len(bytes); j++ {
+			if i != j && bytes[i] == bytes[j] {
+				return false
+			}
+		}
 	}
 	return true
 }
