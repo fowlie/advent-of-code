@@ -152,7 +152,7 @@ func main() {
 
   // part 2 - add 50.000 units of sand
   addLine(0, maxY + 2, 799, maxY + 2)
-	for range [50000]int{} {
+	for {
 		addSand(500)
     if level[0][500] == SAND {
       break
