@@ -1,3 +1,5 @@
+import functools
+
 map = {}
 
 with open("input") as input:
@@ -25,6 +27,7 @@ def translate(n, key):
     return n
 
 
+@functools.lru_cache(maxsize=1000000)
 def get_location(n):
     soil = translate(n, "seed-to-soil")
     fertilizer = translate(soil, "soil-to-fertilizer")
