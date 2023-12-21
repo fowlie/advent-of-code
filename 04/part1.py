@@ -8,6 +8,11 @@ with open("input") as input:
         hand.append(line.split("|")[1].strip().split(" "))
         points.append(0)
 
+for i, w in enumerate(winning):
+    for j, a in enumerate(w):
+        if a == "":
+            winning[i].pop(j)
+
 for i in range(len(winning)):
     for h in winning[i]:
         if h in hand[i]:
@@ -20,4 +25,5 @@ for i in range(len(winning)):
 sum = 0
 for i in points:
     sum += i
+# 28750 is correct
 print(f"the answer is {sum}")
